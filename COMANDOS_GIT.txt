@@ -8,12 +8,12 @@ git add .
 git commit -m "comentario"
 
 //Linkar a um respositorio remoto
-git remote add origin [LINK DO REPO]
+git remote add origin https://github.com/KaioWesley/Projeto_Redes.git
 
 
 //Configurar proxy
 //Se sua senha tiver @ trocar por %40
-git config --local http.proxy http://USUARIO:SENHA@10.107.132.7:3129
+git config --local http.proxy http://17259206:Kiomaster0@10.107.132.7:3129
 
 
 //Enviar o containner pro servidor

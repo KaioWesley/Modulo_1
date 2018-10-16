@@ -42,16 +42,6 @@
             </nav>
             <section class="gerenciador">
                
-                <div class="imagem2">
-                    <a href="cadastroNivel.php">
-                        <img src="Imagens/cadastroNivel.png">
-                    </a>
-                </div>
-                <div class="imagem2">
-                    <a href="cadastroUser.php">
-                        <img src="Imagens/cadastroUser.png">
-                    </a>
-                </div>
             
             </section>
             <footer>SITE DESENVOLVIDO POR KAIO WESLEY</footer>

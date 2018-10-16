@@ -79,11 +79,13 @@ a{
 }
 
 .gerenciador{
-    width: 100%;
+    width: 1000px;
     min-height: 558px;
     height: auto;
     background-color: azure;
     padding: 30px;
+    box-sizing: border-box;
+    
 }
 
 .conteudo{
@@ -101,6 +103,30 @@ a{
     height: 128px;
     background-color: mediumaquamarine;
     float: left;
+}
+
+.imagem2{
+    width: 256px;
+    height: 256px;
+    margin-left: 130px;
+    margin-top: 130px;
+    float: left;
+}
+
+.cadastroUser{
+    width: 500px;
+    height: 500px;
+    background-color: indianred;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cadastroNivel{
+    width: 500px;
+    height: 70px;
+    background-color: mediumpurple;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .titulo{
