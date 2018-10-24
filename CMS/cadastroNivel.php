@@ -114,7 +114,7 @@
                 
                     <form name="frmCadastro" method="post" action="cadastroNivel.php">
                     
-                        <table border="1">
+                        <table>
                             <tr>
                                 <td>
                                     Nivel:
@@ -124,9 +124,9 @@
                                 </td>
                             <tr>
                                 <td colspan="2">
-                                    <input type="submit" value="<?php echo($botao)?>" name="btnNivel">
+                                    <input type="submit" value="<?php echo($botao)?>" name="btnNivel"
+                                    class="botao">
                                 </td>
-                            </tr>
                             </tr>
                             
                         </table>
@@ -135,9 +135,9 @@
                 
                 </div>
             
-                <table border="1">
+                <table>
                     
-                        <tr>
+                        <tr class="tabela">
                         
                             <td>
                                 Nivel:

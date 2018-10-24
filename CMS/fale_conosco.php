@@ -133,8 +133,8 @@
                 </div>
             </nav>
             <section class="gerenciador">
-                <table border="1">
-                    <tr>
+                <table>
+                    <tr class="tabela">
                         <td>
                             Nome
                         </td>

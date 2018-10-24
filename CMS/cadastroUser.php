@@ -128,8 +128,8 @@
                 
                     <form name="frmCadastro" method="post" action="cadastroUser.php">
                         
-                        <table border="1">
-                            <tr>
+                        <table>
+                            <tr class="tabela">
                                 <td>
                                     Nome
                                 </td>
@@ -218,7 +218,7 @@
                             
                         </table>
                     
-                        <table border="1">
+                        <table>
                             <tr>
                                 <td>
                                     Nome Completo:
@@ -307,7 +307,8 @@
                             
                             <tr>
                                 <td colspan="2">
-                                    <input type="submit" value="<?php echo($botao); ?>" name="btnUser">
+                                    <input type="submit" value="<?php echo($botao); ?>" name="btnUser"
+                                    class="botao">
                                 </td>
                             </tr>
                             

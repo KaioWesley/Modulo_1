@@ -16,7 +16,7 @@ body, h3{
 header{
     width: 100%;
     height: 150px;
-    background-color: #466300;
+    background-color: #0f540a;
     color: white;
     border-top-left-radius: 60px;
     border-top-right-radius: 60px;
@@ -34,14 +34,13 @@ h3{
 .logo{
     width: 128px;
     height: 128px;
-    background-color: black;
     float: left;
 }
 
 nav{
     width: 100%;
     height: 150px;
-    background-color: antiquewhite;
+    background-color: yellowgreen;
 }
 
 .alinhar{
@@ -56,10 +55,14 @@ nav{
 .link{
     width: 128px;
     height: 128px;
-    background-color: lightcoral;
     float: left;
     margin-left: 10px;
     margin-top: 5px;
+}
+
+.link:hover{
+    background-color: #38a0d1;
+    transition: 1s;
 }
 
 .mensagem{
@@ -113,10 +116,14 @@ a{
     float: left;
 }
 
+.imagem2:hover{
+    background-color: #38a0d1;
+    transition: 1s;
+}
+
 .cadastroUser{
     width: 550px;
     height: 500px;
-    background-color: gainsboro;
     margin-left: auto;
     margin-right: auto;
 }
@@ -124,7 +131,6 @@ a{
 .cadastroNivel{
     width: 500px;
     height: 70px;
-    background-color: mediumpurple;
     margin-left: auto;
     margin-right: auto;
 }
@@ -141,7 +147,7 @@ footer{
     height: 40px;
     color: aliceblue;
     text-align: center;
-    background-color: #466300;
+    background-color: #0f540a;
     border-bottom-left-radius: 60px;
     border-bottom-right-radius: 60px;
     padding-top: 10px;
@@ -154,4 +160,23 @@ table{
     margin-right: auto;
     margin-left: auto;
     text-align: center;
+    margin-bottom: 30px;
+}
+
+/*CADASTRO NIVEL*/
+
+.tabela{
+    width: 100px;
+    height: 10px;
+    background-color: #004a6d;
+    color: azure;
+    font-family: verdana;
+}
+
+.botao{
+    width: 150px;
+    height: 30px;
+    background-color: springgreen;
+    font-family: verdana;
+    margin-top: 10px;
 }
