@@ -1,3 +1,14 @@
+<?php 
+
+    require_once('CMS/externo.php');
+
+	$conexao = conexaoBD();
+
+    session_start();
+
+    
+
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -50,14 +61,17 @@
                 
                 <div class="texto">
                     <div class="imgFundo2">
-                        <div class="banca">Av. Machado de Assis n°7</div>
-                        <div class="banca">R. Alameda Araguaia n°30</div>
-                        <div class="banca">R. Rosa Escarpa n°65</div>
-                        <div class="banca">Av. Leonardo da Vinci n°9</div>
-                        <div class="banca">Av. Santa Ifigênia n°300</div>
-                        <div class="banca">Estrada do Caracol n°56</div>
-                        <div class="banca">Av. Grajaú n°60</div>
-                        <div class="banca">R. 18 de Fevereiro n° 89</div>
+                        <?php
+                    
+                        $sql = "SELECT * FROM tbl_endereco";
+                    
+                        $select = mysqli_query($conexao, $sql);
+                    
+                        while($rsEnd = mysqli_fetch_array($select)){
+                    
+                        ?>
+                        <div class="banca"><?php echo($rsEnd['logradouro'])?> Nº <?php echo($rsEnd['numero'])?></div>
+                        <?php } ?>
                     </div>
                 </div>
             

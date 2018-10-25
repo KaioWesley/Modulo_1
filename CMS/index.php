@@ -47,7 +47,7 @@
                         <img src="Imagens/TopNews.png">
                     </div>
                     <div class="titulo">
-                    
+                        
                     </div>
                 </div>
                 <div class="conteudo">
@@ -67,20 +67,24 @@
                     </div>
                 </div>
                 <div class="conteudo">
-                    <div class="imagem">
-                        <img src="Imagens/Map.png">
-                    </div>
-                    <div class="titulo">
-                    
-                    </div>
+                    <a href="CadastroEndereco.php">
+                        <div class="imagem">
+                            <img src="Imagens/Map.png">
+                        </div>
+                        <div class="titulo">
+                            Nossas Bancas
+                        </div>
+                    </a>
                 </div>
                 <div class="conteudo">
-                    <div class="imagem">
-                        <img src="Imagens/Celebridade.png">
-                    </div>
-                    <div class="titulo">
-                    
-                    </div>
+                    <a href="cadastroCelebridade.php">
+                        <div class="imagem">
+                            <img src="Imagens/Celebridade.png">
+                        </div>
+                        <div class="titulo">
+                            Celebridades do dia
+                        </div>
+                    </a>
                 </div>
                 <div class="conteudo">
                     <div class="imagem">

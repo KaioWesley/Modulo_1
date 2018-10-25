@@ -137,9 +137,14 @@ a{
 
 .titulo{
     width: 256px;
-    height: 128px;
+    height: 88px;
     background-color: mediumseagreen;
     float: left;
+    color: #ffffff;
+    text-align: center;
+    font-family: verdana;
+    padding-top: 40px;
+    font-size: 20px;
 }
 
 footer{
@@ -163,6 +168,8 @@ table{
     margin-bottom: 30px;
 }
 
+
+
 /*CADASTRO NIVEL*/
 
 .tabela{
@@ -171,6 +178,7 @@ table{
     background-color: #004a6d;
     color: azure;
     font-family: verdana;
+    margin-bottom: 30px;
 }
 
 .botao{
