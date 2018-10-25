@@ -72,8 +72,8 @@
 				 </script>
 				 <style>
             #container{
-                width: 100%;
-                height: 100%;
+                width: 300px;
+                height: 300px;
                 background-color: rgba(0,0,0,0.5);
                 position: fixed;
                 z-index: 999;
@@ -81,8 +81,8 @@
             }
 
             #modal{
-                width: 1000px;
-                height: 900px;
+                width: 200px;
+                height: 200px;
                 background-color: #ffffff;
                 margin-left: auto;
                 margin-right: auto;
