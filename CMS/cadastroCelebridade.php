@@ -6,82 +6,57 @@
 
     session_start();
 
-    $nome = null;
-    $numero = null;
+    $sobre = null;
+    $imagem = null;
+    $tela = null;
     $botao = "Cadastrar";
 
+    require_once('CadastroImagens.php');
 
     if(isset($_POST['btnCadastro'])){
         $sobre = $_POST['txtSobre'];
-        
-        //PUXANDO A FOTO
-        
-        $foto = $_FILES['imgFoto']['name'];
-        $tamanho_foto = $_FILES['imgFoto']['size'];
-        $tamanho_foto = round($tamanho_foto/1024);
-        $ext_foto = strrchr($foto, ".");
-        $nome_foto = pathinfo($foto, PATHINFO_FILENAME);
-        $nome_foto = md5(uniqid(time()).$nome_foto);
-        $diretorio = "upload/";
-        $extensao = array(".jpg",".png",".jpeg");
-        
-        //PUXANDO O BANNER
-        
-        $banner = $_FILES['imgBanner']['name'];
-        $tamanho_banner = $_FILES['imgBanner']['size'];
-        $tamanho_banner = round($tamanho_banner/1024);
-        $ext_banner = strrchr($banner, ".");
-        $nome_banner = pathinfo($banner, PATHINFO_FILENAME);
-        $nome_banner = md5(uniqid(time()).$nome_banner);
-        
-        
-        //ESTA PARTE AINDA NÃO ESTA PRONTA CHAME O PROFESSOR DPS DE ENTENDER O POR QUE NÃO DEU CERTO
-        
-        if(in_array($ext_foto, $extensao)){
-            if($tamanho_foto<=2000){
-                $foto_tmp = $_FILES['imgFoto']['tmp_name'];
-                $arquivo = $diretorio.$nome_foto.$ext_foto;
-                
-                if(move_uploaded_file($foto_tmp, $foto)){
-                    
-                    if($_POST['btnCadastro']=="Cadastrar"){
-                        $sql = "INSERT INTO tbl_celebridade
-                        (logradouro, numero)
-                        VALUES ('".$nome."', '".$numero."')";
-            
-                    }else if($_POST['btnCadastro']=="Editar"){
-                        $sql="UPDATE tbl_celebridade SET logradouro = '".$nome."', numero = '".$numero."' WHERE idEndereco=".$_SESSION['idEndereco'];
-                    }
-                    
-                }
-            }
-        }
-        
-        
-        
-        
-        
         
         
         
         
         
         if($_POST['btnCadastro']=="Cadastrar"){
-        $sql = "INSERT INTO tbl_endereco
-        (logradouro, numero)
-        VALUES ('".$nome."', '".$numero."')";
+            $imagem = imagens($_FILES['imgFoto']);
+            $tela = imagens($_FILES['imgBanner']);
+            if($imagem == null || $tela == null){
+                echo("erro");
+            }else{
+                $sql = "INSERT INTO tbl_celebridade
+        (informacao, foto, banner)
+        VALUES ('".$sobre."', '".$imagem."', '".$tela."')";
             
-    }else if($_POST['btnCadastro']=="Editar"){
-        $sql="UPDATE tbl_endereco SET logradouro = '".$nome."', numero = '".$numero."' WHERE idEndereco=".$_SESSION['idEndereco'];
     }
+                
+            }else if($_POST['btnCadastro']=="Editar"){
+                $imagem = imagens($_FILES['imgFoto']);
+                $tela = imagens($_FILES['imgBanner']);
+                
+            if($imagem == null && $tela == null){
+                
+                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
+                
+            }else if($imagem != null && $tela == null){
+                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."', foto = '".$imagem."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
+                
+            }else if($imagem == null && $tela != null){
+                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."', banner = '".$tela."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
+            }else{
+                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."', foto = '".$imagem."', banner = '".$tela."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
+            }
+            
         
-        
-
+    }
+            
     mysqli_query($conexao, $sql);
         
     //echo($sql);
 
-    header('location:CadastroEndereco.php');
+    header('location:CadastroCelebridade.php');
     }
 
 
@@ -89,28 +64,29 @@
         $modo = $_GET['modo'];
         
         if($modo == 'excluir'){
-            $codigo = $_GET['idEndereco'];
-            $sql = "DELETE FROM tbl_endereco where idEndereco=".$codigo;
+            $codigo = $_GET['idCelebridade'];
+            $sql = "DELETE FROM tbl_celebridade where idCelebridade=".$codigo;
             
             mysqli_query($conexao, $sql);
             
             //echo($sql);
-            header('location:CadastroEndereco.php');
+            header('location:CadastroCelebridade.php');
             
         }else if($modo == 'busca'){
             $botao = "Editar";
-            $codigo = $_GET['idEndereco'];
+            $codigo = $_GET['idCelebridade'];
             
-            $_SESSION['idEndereco'] = $codigo;
-            $sql = "SELECT * FROM tbl_endereco where idEndereco=".$codigo;
+            $_SESSION['idCelebridade'] = $codigo;
+            $sql = "SELECT * FROM tbl_celebridade where idCelebridade=".$codigo;
             
             $select = mysqli_query($conexao, $sql);
             
-            
+           
             
             if($rsEnd=mysqli_fetch_array($select)){
-                $nome = $rsEnd['logradouro'];
-                $numero = $rsEnd['numero'];
+                $sobre = $rsEnd['informacao'];
+                $imagem = $rsEnd['foto'];
+                $tela = $rsEnd['banner'];
             }
         }
     }
@@ -161,14 +137,14 @@
             </nav>
             <section class="gerenciador">
             
-                <form name="frmCadastro" method="post" action="CadastroCelebridade.php">
+                <form name="frmCadastro" method="post" action="CadastroCelebridade.php" enctype="multipart/form-data">
                     <table border="1">
                         <tr>
                             <td>
                                 Sobre a Celebridade:
                             </td>
                             <td>
-                                <textarea name="txtSobre"></textarea>
+                                <textarea name="txtSobre" maxlength="350" cols="40" rows="5"><?php echo($sobre)?></textarea>
                             </td>
                             
                         </tr>
@@ -177,7 +153,7 @@
                                 Imagem:
                             </td>
                             <td>
-                                <input type="file" name="imgFoto">
+                                <input type="file" name="imgFoto" value="">
                             </td>
                             
                         </tr>
@@ -186,8 +162,18 @@
                                 Banner:
                             </td>
                             <td>
-                                <input type="file" name="imgFoto">
+                                <input type="file" name="imgBanner" value="">
                             </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <img src="<?php echo($imagem)?>" class="foto">
+                            </td>
+                            <td>
+                                <img src="<?php echo($tela)?>" class="banner">
+                            </td>
+                            
                         </tr>
                         
                         <tr>
@@ -232,18 +218,19 @@
                          <tr>
                         
                             <td>
-                                <?php 
+                                <img src="<?php 
                                 
                                     echo($rsEnd['foto'])
                             
-                                ?>
+                                ?>" class="foto">
+                                
                             </td>
                              <td>
-                                <?php 
+                                <img src="<?php 
                                 
                                     echo($rsEnd['banner'])
                             
-                                ?>
+                                ?>" class="banner">
                             </td>
                              
                              <td>
@@ -254,10 +241,10 @@
                                 ?>
                             </td>
                             <td>
-                                <a href="CadastroEndereco.php?modo=excluir&idEndereco=<?php echo($rsEnd['idEndereco'])?>">
+                                <a href="cadastroCelebridade.php?modo=excluir&idCelebridade=<?php echo($rsEnd['idCelebridade'])?>">
                                     <img src="Imagens/delete.png"></a>
                                 
-                                <a href="CadastroEndereco.php?modo=busca&idEndereco=<?php echo($rsEnd['idEndereco'])?>">
+                                <a href="cadastroCelebridade.php?modo=busca&idCelebridade=<?php echo($rsEnd['idCelebridade'])?>">
                                     <img src="Imagens/pencil.png"></a>
                             </td>
                             

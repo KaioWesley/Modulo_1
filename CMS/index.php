@@ -42,60 +42,65 @@
             </nav>
             <section class="gerenciador">
                 
-                <div class="conteudo">
-                    <div class="imagem">
-                        <img src="Imagens/TopNews.png">
+                <div class="centro">
+                    <div class="conteudo">
+                        <a href="cadastroNoticias.php">
+                            <div class="imagem">
+                                <img src="Imagens/TopNews.png">
+                            </div>
+                            <div class="titulo">
+                                Noticias
+                            </div>
+                        </a>
                     </div>
-                    <div class="titulo">
-                        
+                    <div class="conteudo">
+                        <a href="SobreBanca.php">
+                            <div class="imagem">
+                                <img src="Imagens/Newsstand.png">
+                            </div>
+                            <div class="titulo">
+                                Sobre a Banca
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="conteudo">
-                    <div class="imagem">
-                        <img src="Imagens/Newsstand.png">
-                    </div>
-                    <div class="titulo">
-                    
-                    </div>
-                </div>
-                <div class="conteudo">
-                    <div class="imagem">
-                        <img src="Imagens/Promocao.png">
-                    </div>
-                    <div class="titulo">
-                    
-                    </div>
-                </div>
-                <div class="conteudo">
-                    <a href="CadastroEndereco.php">
+                    <div class="conteudo">
                         <div class="imagem">
-                            <img src="Imagens/Map.png">
+                            <img src="Imagens/Promocao.png">
                         </div>
                         <div class="titulo">
-                            Nossas Bancas
+                            Promoções
                         </div>
-                    </a>
-                </div>
-                <div class="conteudo">
-                    <a href="cadastroCelebridade.php">
+                    </div>
+                    <div class="conteudo">
+                        <a href="CadastroEndereco.php">
+                            <div class="imagem">
+                                <img src="Imagens/Map.png">
+                            </div>
+                            <div class="titulo">
+                                Nossas Bancas
+                            </div>
+                        </a>
+                    </div>
+                    <div class="conteudo">
+                        <a href="cadastroCelebridade.php">
+                            <div class="imagem">
+                                <img src="Imagens/Celebridade.png">
+                            </div>
+                            <div class="titulo">
+                                Celebridades do dia
+                            </div>
+                        </a>
+                    </div>
+                    <div class="conteudo">
                         <div class="imagem">
-                            <img src="Imagens/Celebridade.png">
+                            <img src="Imagens/Fale_Consco.png">
                         </div>
                         <div class="titulo">
-                            Celebridades do dia
+
                         </div>
-                    </a>
-                </div>
-                <div class="conteudo">
-                    <div class="imagem">
-                        <img src="Imagens/Fale_Consco.png">
                     </div>
-                    <div class="titulo">
-                    
-                    </div>
+
                 </div>
-                       
-                
             
             </section>
             <footer>SITE DESENVOLVIDO POR KAIO WESLEY</footer>

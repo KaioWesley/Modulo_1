@@ -1,3 +1,12 @@
+<?php
+
+     require_once('CMS/externo.php');
+
+	$conexao = conexaoBD();
+
+    session_start();
+
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -55,15 +64,24 @@
                             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="svg/loading/static-svg/spin.svg" alt="Carregando" />
                         </div>
                         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+                            
+                            <?php
+                            
+                                $sql = "SELECT * FROM tbl_celebridade";
+                            
+                            $select = mysqli_query($conexao, $sql);
+                    
+                        while($rsEnd = mysqli_fetch_array($select)){?>
+                            
                             <div>
-                                <img data-u="image" src="banner/Celebridade/MJ.jpg" alt="Michael Jackson" title="Michael Jackson"/>
+                                <img data-u="image" src="CMS/<?php 
+                                
+                                    echo($rsEnd['banner'])
+                            
+                                ?>" class="foto" alt="Michael Jackson" title="Michael Jackson"/>
                             </div>
-                            <div>
-                                <img data-u="image" src="banner/Celebridade/J5.jpg" alt="Michael Jackson" title="Michael Jackson"/>
-                            </div>
-                            <div>
-                                <img data-u="image" src="banner/Celebridade/thiller.jpg" alt="Michael Jackson" title="Michael Jackson"/>
-                            </div>
+                            <?php }?>
+                            
                             
                         </div>
         <!-- Bullet Navigator -->
@@ -96,21 +114,31 @@
             <section class="texto">
                 <div class="cor3">
                     <div class="informacao">
+                        
+                            <?php
+                            
+                                $sql = "SELECT * FROM tbl_celebridade";
+                            
+                            $select = mysqli_query($conexao, $sql);
+                    
+                        while($rsEnd = mysqli_fetch_array($select)){?>
                         <div class="inicio">
-                            <div class="image1"></div>
+                            <div class="image1">
+                                <img src="CMS/<?php 
+                                
+                                    echo($rsEnd['foto'])
+                            
+                                ?>" class="foto">
+                            </div>
                             <div class="resumo">
-                                <p>Michael Joseph Jackson foi um famoso cantor, compositor, dançarino, produtor, empresário, arranjador vocal, filantropo, pacifista e ativista estadunidense. Segundo a revista Rolling Stone, faturou em vida cerca de sete bilhões de dólares, fazendo dele o artista mais rico de toda a história.</p>
-
-</div>
-                        </div>
-                        <div class="meio">
-                            <div class="resumo"><p>Começou a cantar e a dançar aos cinco anos de idade, iniciando-se na carreira profissional aos onze anos como vocalista dos Jackson 5. Começou logo depois uma carreira solo em 1971, permanecendo como membro do grupo. Reconhecido nos anos seguintes como Rei do Pop.</p></div>
-                            <div class="image2"></div>
-                        </div>
-                        <div class="fim">
-                            <div class="image3"></div>
-                            <div class="resumo"><p>Michael Jackson foi o o maior artista de todos os tempos segundo o Guinness Book por ter vendido incríveis 1,5 bilhões de gravações em toda a sua carreira e se manter nos charts musicais desde 1969.</p></div>
-                        </div>
+                                
+                                <?php echo($rsEnd['informacao'])?>
+                            
+                            </div>
+                            </div>
+                            <?php }?>
+                        
+                        
                     </div>
                 </div>            
             </section>

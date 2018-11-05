@@ -1,3 +1,12 @@
+<?php
+
+     require_once('CMS/externo.php');
+
+	$conexao = conexaoBD();
+
+    session_start();
+
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -51,24 +60,44 @@
                     <div class="img1">
                         <h2 class="titulo">A criação</h2>
                         <div class="cor">
+                            <?php
+                    
+                        $sql = "SELECT * FROM tbl_criacao";
+                    
+                        $select = mysqli_query($conexao, $sql);
+                    
+                        while($rsEnd = mysqli_fetch_array($select)){
+                    
+                    ?>
                             <div class="centro">
-                                <img src="Image/Lamp.png" alt="Lampada" title="Lampada">
+                                <img src="CMS/<?php echo($rsEnd['icone']) ?>" alt="Lampada" title="Lampada" class="icone">
                             </div>
                             
-                            <p>Nossa banca começou com o sonho de uma pessoa em 1938, ela se chamava Sophia da Silva, o sonho era poder alertar o país sobre uma possivel guerra que iria vir.</p>
-                            <p>O nome da banca iria ser "A grande guerra" mas em 1947 mudou para Bugs Bunny por conta do sucesso do personagem da Warner Bros.</p>
+                            <p><?php echo($rsEnd['paragrafo1']) ?></p>
+                            <p><?php echo($rsEnd['paragrafo2']) ?></p>
+                        <?php } ?>
                         </div>
                     </div>
                     
                     <div class="img2">
                         <h2 class="titulo">Acontecimentos importantes</h2>
                         <div class="cor">
+                            <?php
+                    
+                        $sql = "SELECT * FROM tbl_eventos_importantes";
+                    
+                        $select = mysqli_query($conexao, $sql);
+                    
+                        while($rsEnd = mysqli_fetch_array($select)){
+                    
+                    ?>
                             <div class="centro">
-                                <img src="Image/Paper.png" alt="Jornal" title="Jornal">
+                                <img src="CMS/<?php echo($rsEnd['iconeEvento']) ?>" alt="Lampada" title="Lampada" class="icone">
                             </div>
                             
-                            <p>Em 1968 em seu aniversário de 30 anos a banca ficou com as portas fechadas por conta da censura que estava tendo na ditadura militar.</p>
-                            <p>As portas só voltaram a abrir em abril de 1986 e desde então esta ativa com dezenas de unidades por todo estado de São Paulo.</p>
+                            <p><?php echo($rsEnd['paragrafoEvento1']) ?></p>
+                            <p><?php echo($rsEnd['paragrafoEvento2']) ?></p>
+                        <?php } ?>
                         </div>
                     </div>
                     

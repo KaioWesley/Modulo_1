@@ -51,9 +51,9 @@
                     
                     
             </section>
-            <section class="conteudo">
+            <section class="conteudo2">
                 
-                <div class="livro">
+                <div class="livro2">
                     <table>
                         <tr>
                             <td >
@@ -83,7 +83,7 @@
                     </table>
                 </div>
                 
-                <div class="livro">
+                <div class="livro2">
                     <table>
                        <tr>
                             <td >
@@ -113,7 +113,7 @@
                     </table>
                 </div>
                 
-                <div class="livro">
+                <div class="livro2">
                     <table>
                         
                         <tr>
@@ -144,7 +144,7 @@
                     </table>
                 </div>
                 
-                <div class="livro">
+                <div class="livro2">
                     <table>
                         
                         <tr>
@@ -175,7 +175,7 @@
                     </table>
                 </div>
                 
-                <div class="livro">
+                <div class="livro2">
                     <table>
                         
                         <tr>
@@ -206,7 +206,7 @@
                     </table>
                 </div>
                 
-                <div class="livro">
+                <div class="livro2">
                     <table>
                         
                         <tr>
@@ -237,14 +237,6 @@
                     </table>
                 </div>
             
-            </section>
-            
-            <section class="link">
-                <h3 class="categoria">CATEGORIAS</h3>
-                
-                <div class="subLink">EM MANUTENÇÃO</div>
-                <div class="subLink"></div>
-                
             </section>
             
         </div>

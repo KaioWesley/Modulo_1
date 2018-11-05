@@ -1,3 +1,12 @@
+<?php
+
+     require_once('CMS/externo.php');
+
+	$conexao = conexaoBD();
+
+    session_start();
+
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -54,16 +63,23 @@
                             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="svg/loading/static-svg/spin.svg" alt="Carregando" />
                         </div>
                         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+                            <?php
+                    
+                        $sql = "SELECT * FROM tbl_noticia";
+                    
+                        $select = mysqli_query($conexao, $sql);
+                    
+                        while($rsEnd = mysqli_fetch_array($select)){
+                    
+                    ?>
                             <div>
-                                <img data-u="image" src="banner/Noticias/furacao.jpg" alt="furacao mata 15" title="furacao mata 15"/>
-                            </div>
-                            <div>
-                                <img data-u="image" src="banner/Noticias/brasileiro.jpg" alt="brasileiro morre no exterior" title="brasileiro morre no exterior"/>
-                            </div>
-                            <div>
-                                <img data-u="image" src="banner/Noticias/maldito.jpg" alt="homem é solto depois de esfaquear cães de rua" title="homem é solto depois de esfaquear cães de rua"/>
-                            </div>
+                                <img data-u="image" src="CMS/<?php 
+                                
+                                    echo($rsEnd['banner'])
                             
+                                ?>" alt="Noticias" title="furacao mata 15"/>
+                            </div>
+                        <?php } ?>
                             
                         </div>
         <!-- Bullet Navigator -->
@@ -97,19 +113,28 @@
             
             <section class="noticia_principal">
                 <h1 class="titulo">AS PRINCIPAIS NOTICIAS ESTÃO AQUI</h1>
+                <?php
+                    
+                        $sql = "SELECT * FROM tbl_noticia";
+                    
+                        $select = mysqli_query($conexao, $sql);
+                    
+                        while($rsEnd = mysqli_fetch_array($select)){
+                    
+                    ?>
                 
                 
+                
+                <div class="titulo2">
+                        <?php echo($rsEnd['titulo']) ?></div>
                 <div class="noticias1">
-                    <div class="titulo2">Lobo-guará é resgatado dentro de tubulação de água</div>
+                    <img src="
+                    CMS/<?php echo($rsEnd['imagem']) ?>
+                    " class="noticias2">
+                    
                 </div>
                 
-                <div class="noticias2">
-                    <div class="titulo2">Homem é detido com 20 pacas abatidas </div>
-                </div>
-                
-                <div class="noticias3">
-                    <div class="titulo2">Israelense é morto a facadas por palestino na Cisjordânia</div>
-                </div>
+                <?php }?>
                 
             </section>
             
