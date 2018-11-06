@@ -39,7 +39,7 @@
                 </nav>
                     
                     <div class="login">
-                        <form name="frmLogin" method="post" action="index.php" >
+                        <form name="frmLogin" method="post" action="login.php" >
                             Usuario:<br>
                             <input type="text" name="txtUsuario"><br>
 
@@ -65,7 +65,7 @@
                         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
                             <?php
                     
-                        $sql = "SELECT * FROM tbl_noticia";
+                        $sql = "SELECT * FROM tbl_noticia where ativado = 1";
                     
                         $select = mysqli_query($conexao, $sql);
                     
@@ -115,7 +115,7 @@
                 <h1 class="titulo">AS PRINCIPAIS NOTICIAS ESTÃO AQUI</h1>
                 <?php
                     
-                        $sql = "SELECT * FROM tbl_noticia";
+                        $sql = "SELECT * FROM tbl_noticia where ativado = 1";
                     
                         $select = mysqli_query($conexao, $sql);
                     

@@ -39,7 +39,7 @@
                 </nav>
                     
                     <div class="login">
-                        <form name="frmLogin" method="post" action="index.php" >
+                        <form name="frmLogin" method="post" action="login.php" >
                             Usuario:<br>
                             <input type="text" name="txtUsuario"><br>
 
@@ -67,7 +67,7 @@
                             
                             <?php
                             
-                                $sql = "SELECT * FROM tbl_celebridade";
+                                $sql = "SELECT * FROM tbl_celebridade where ativado = 1";
                             
                             $select = mysqli_query($conexao, $sql);
                     
@@ -117,7 +117,7 @@
                         
                             <?php
                             
-                                $sql = "SELECT * FROM tbl_celebridade";
+                                $sql = "SELECT * FROM tbl_celebridade where ativado = 1";
                             
                             $select = mysqli_query($conexao, $sql);
                     

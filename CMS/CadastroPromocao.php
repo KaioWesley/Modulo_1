@@ -6,57 +6,51 @@
 
     session_start();
 
-    $sobre = null;
-    $imagem = null;
-    $tela = null;
+    $titulo = null;
+    $preco = null;
     $botao = "Cadastrar";
 
     require_once('CadastroImagens.php');
 
     if(isset($_POST['btnCadastro'])){
-        $sobre = $_POST['txtSobre'];
-        
+        $titulo = $_POST['txtTitulo'];
+        $preco = $_POST['txtPreco'];
         
         
         
         
         if($_POST['btnCadastro']=="Cadastrar"){
-            $imagem = imagens($_FILES['imgFoto']);
-            $tela = imagens($_FILES['imgBanner']);
-            if($imagem == null || $tela == null){
+            $capa = imagens($_FILES['imgCapa']);
+            if($capa == null){
                 echo("erro");
             }else{
-                $sql = "INSERT INTO tbl_celebridade
-        (informacao, foto, banner, ativado)
-        VALUES ('".$sobre."', '".$imagem."', '".$tela."', 1)";
+                $sql = "INSERT INTO tbl_promocao
+        (titulo, preco, capa, ativado)
+        VALUES ('".$titulo."', '".$preco."', '".$capa."', 1)";
             
     }
                 
             }else if($_POST['btnCadastro']=="Editar"){
-                $imagem = imagens($_FILES['imgFoto']);
-                $tela = imagens($_FILES['imgBanner']);
+                $capa = imagens($_FILES['imgCapa']);
                 
-            if($imagem == null && $tela == null){
                 
-                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
+            if($capa == null){
                 
-            }else if($imagem != null && $tela == null){
-                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."', foto = '".$imagem."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
+                $sql="UPDATE tbl_promocao SET titulo = '".$titulo."', preco = '".$preco."' WHERE idPromocao=".$_SESSION['idPromocao'];
                 
-            }else if($imagem == null && $tela != null){
-                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."', banner = '".$tela."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
-            }else{
-                $sql="UPDATE tbl_celebridade SET informacao = '".$sobre."', foto = '".$imagem."', banner = '".$tela."' WHERE idCelebridade=".$_SESSION['idCelebridade'];
+            }else if($capa != null){
+                $sql="UPDATE tbl_promocao SET titulo = '".$titulo."', capa = '".$capa."', preco = '".$preco."' WHERE idPromocao=".$_SESSION['idPromocao'];
+                
             }
             
         
     }
-            
+        
     mysqli_query($conexao, $sql);
         
     //echo($sql);
 
-    header('location:CadastroCelebridade.php');
+    header('location:CadastroPromocao.php');
     }
 
 
@@ -64,49 +58,48 @@
         $modo = $_GET['modo'];
         
         if($modo == 'excluir'){
-            $codigo = $_GET['idCelebridade'];
-            $sql = "DELETE FROM tbl_celebridade where idCelebridade=".$codigo;
+            $codigo = $_GET['idPromocao'];
+            $sql = "DELETE FROM tbl_promocao where idPromocao=".$codigo;
             
             mysqli_query($conexao, $sql);
             
             //echo($sql);
-            header('location:CadastroCelebridade.php');
+            header('location:CadastroPromocao.php');
             
         }else if($modo == 'busca'){
             $botao = "Editar";
-            $codigo = $_GET['idCelebridade'];
+            $codigo = $_GET['idPromocao'];
             
-            $_SESSION['idCelebridade'] = $codigo;
-            $sql = "SELECT * FROM tbl_celebridade where idCelebridade=".$codigo;
+            $_SESSION['idPromocao'] = $codigo;
+            $sql = "SELECT * FROM tbl_promocao where idPromocao=".$codigo;
             
             $select = mysqli_query($conexao, $sql);
             
            
             
             if($rsEnd=mysqli_fetch_array($select)){
-                $sobre = $rsEnd['informacao'];
-                $imagem = $rsEnd['foto'];
-                $tela = $rsEnd['banner'];
+                $titulo = $rsEnd['titulo'];
+                $capa = $rsEnd['capa'];
+                $preco = $rsEnd['preco'];
             }
         }else if($modo == 'ativado'){
-            $codigo = $_GET['idCelebridade'];
-            $_SESSION['idCelebridade'] = $codigo;
-            $sql = "UPDATE tbl_celebridade SET ativado = 1 WHERE idCelebridade=".$_SESSION['idCelebridade'];
+            $codigo = $_GET['idPromocao'];
+            $_SESSION['idPromocao'] = $codigo;
+            $sql = "UPDATE tbl_promocao SET ativado = 1 WHERE idPromocao=".$_SESSION['idPromocao'];
             mysqli_query($conexao, $sql);
-            header('location:CadastroCelebridade.php');
+            header('location:CadastroPromocao.php');
             
         //If para desativar conteudo
         }else if($modo == 'desativado'){
-            $codigo = $_GET['idCelebridade'];
-            $_SESSION['idCelebridade'] = $codigo;
-            $sql = "UPDATE tbl_celebridade SET ativado = 2 WHERE idCelebridade=".$_SESSION['idCelebridade'];
+            $codigo = $_GET['idPromocao'];
+            $_SESSION['idPromocao'] = $codigo;
+            $sql = "UPDATE tbl_promocao SET ativado = 2 WHERE idPromocao=".$_SESSION['idPromocao'];
             mysqli_query($conexao, $sql);
-            header('location:CadastroCelebridade.php');
+            header('location:CadastroPromocao.php');
         }
     }
 
 ?>
-
 <html>
 	<head>
 		<title>
@@ -151,42 +144,38 @@
                 </div>
             </nav>
             <section class="gerenciador">
-            
-                <form name="frmCadastro" method="post" action="CadastroCelebridade.php" enctype="multipart/form-data">
+               <form name="frmCadastro" method="post" action="CadastroPromocao.php" enctype="multipart/form-data">
                     <table border="1">
                         <tr>
                             <td>
-                                Sobre a Celebridade:
+                                Titulo do Livro:
                             </td>
                             <td>
-                                <textarea name="txtSobre" maxlength="350" cols="40" rows="5"><?php echo($sobre)?></textarea>
-                            </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>
-                                Imagem:
-                            </td>
-                            <td>
-                                <input type="file" name="imgFoto" value="">
+                                <input type="text" name="txtTitulo" value="<?php echo($titulo)?>">
                             </td>
                             
                         </tr>
                         <tr>
                             <td>
-                                Banner:
+                                Preço:
                             </td>
                             <td>
-                                <input type="file" name="imgBanner" value="">
+                                <input type="text" name="txtPreco" value="<?php echo($preco)?>" maxlength="10">
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                                Capa do Livro:
+                            </td>
+                            <td>
+                                <input type="file" name="imgCapa">
                             </td>
                         </tr>
                         
                         <tr>
-                            <td>
-                                <img src="<?php echo($imagem)?>" class="foto">
-                            </td>
-                            <td>
-                                <img src="<?php echo($tela)?>" class="banner">
+                            <td colspan="2">
+                                <img src="<?php echo($capa)?>" class="foto">
                             </td>
                             
                         </tr>
@@ -199,20 +188,20 @@
                         </tr>
                         
                     </table>
-                </form>    
+                </form>
                 
                 <table>
                     
                         <tr class="tabela">
                         
                             <td>
-                                Foto:
+                                Capa:
                             </td>
                             <td>
-                                Banner:
+                                Titulo:
                             </td>
                             <td>
-                                Sobre a celebridade:
+                                Preco:
                             </td>
                             <td>
                                 Opções:
@@ -223,7 +212,7 @@
                     
                     <?php
                     
-                        $sql = "SELECT * FROM tbl_celebridade";
+                        $sql = "SELECT * FROM tbl_promocao";
                     
                         $select = mysqli_query($conexao, $sql);
                     
@@ -235,41 +224,42 @@
                             <td>
                                 <img src="<?php 
                                 
-                                    echo($rsEnd['foto'])
+                                    echo($rsEnd['capa'])
                             
                                 ?>" class="foto">
                                 
                             </td>
                              <td>
-                                <img src="<?php 
+                                 <?php 
                                 
-                                    echo($rsEnd['banner'])
+                                    echo($rsEnd['titulo'])
                             
-                                ?>" class="banner">
+                                ?>
+                                
                             </td>
                              
                              <td>
                                 <?php 
                                 
-                                    echo($rsEnd['informacao'])
+                                    echo($rsEnd['preco'])
                             
                                 ?>
                             </td>
                             <td>
-                                <a href="cadastroCelebridade.php?modo=excluir&idCelebridade=<?php echo($rsEnd['idCelebridade'])?>">
+                                <a href="cadastroPromocao.php?modo=excluir&idPromocao=<?php echo($rsEnd['idPromocao'])?>">
                                     <img src="Imagens/delete.png"></a>
                                 
-                                <a href="cadastroCelebridade.php?modo=busca&idCelebridade=<?php echo($rsEnd['idCelebridade'])?>">
+                                <a href="cadastroPromocao.php?modo=busca&idPromocao=<?php echo($rsEnd['idPromocao'])?>">
                                     <img src="Imagens/pencil.png"></a>
                                 
                                 <?php
                                     if($rsEnd['ativado'] == 1){?>
                                       
-                                <a href="cadastroCelebridade.php?modo=desativado&idCelebridade=<?php  echo($rsEnd['idCelebridade'])?>">
+                                <a href="cadastroPromocao.php?modo=desativado&idPromocao=<?php  echo($rsEnd['idPromocao'])?>">
                                     <img src="Imagens/tick.png">
                                 </a>
                                     <?php }else{ ?>
-                                        <a href="cadastroCelebridade.php?modo=ativado&idCelebridade=<?php  echo($rsEnd['idCelebridade'])?>">
+                                        <a href="cadastroPromocao.php?modo=ativado&idPromocao=<?php  echo($rsEnd['idPromocao'])?>">
                                         <img src="Imagens/cross.png">
                                     </a>
                                     
@@ -280,7 +270,6 @@
                         </tr>
                     <?php }?>
                     </table>
-                
             </section>
             <footer>SITE DESENVOLVIDO POR KAIO WESLEY</footer>
         </div>

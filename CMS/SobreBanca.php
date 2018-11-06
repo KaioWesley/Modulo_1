@@ -1,3 +1,12 @@
+<?php 
+    
+    require_once('externo.php');
+
+	$conexao = conexaoBD();
+
+    session_start();
+
+?>
 <html>
 	<head>
 		<title>
@@ -15,28 +24,29 @@
                 <div class="alinhar">
                     <div class="link">
                         <a href="index.php">
-                            <img src="Imagens/Computer.png">
+                            <img src="Imagens/Computer.png"> <br>Adm.Conteudo
                         </a>
                     </div>
                     <div class="link">
                         <a href="fale_conosco.php">
-                            <img src="Imagens/Fale_Conosco.png">
+                            <img src="Imagens/Fale_Conosco.png"> <br>Adm.Fale Conosco
                         </a>
                     </div>
                     <div class="link">
                         <a href="Produtos.php">
-                            <img src="Imagens/News.png">
+                            <img src="Imagens/News.png"> <br>Adm.Produtos
                         </a>
                     </div>
                     <div class="link">
                         <a href="Usuarios.php">
-                            <img src="Imagens/User.png">
+                            <img src="Imagens/User.png"> <br>Adm.Usuarios
                         </a>
                     </div>
                     <div class="mensagem">
-                        BEM-VINDO(xxx)
+                        BEM-VINDO, <?php echo($_SESSION['nome'])?>.
                         <br><br><br><br>
-                        <a href="#">Logout</a>
+                        <a href="../login.php?modo=logout ">    <span>Logout</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -44,12 +54,12 @@
                
                 <div class="imagem2">
                     <a href="P1.php">
-                        <img src="Imagens/Creation.png">
+                        <img src="Imagens/Creation.png"><br> Criação da Banca
                     </a>
                 </div>
                 <div class="imagem2">
                     <a href="P2.php">
-                        <img src="Imagens/Event.png">
+                        <img src="Imagens/Event.png"><br> Eventos importantes
                     </a>
                 </div>
             

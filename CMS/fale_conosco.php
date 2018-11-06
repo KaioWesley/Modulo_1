@@ -72,8 +72,8 @@
 				 </script>
 				 <style>
             #container{
-                width: 300px;
-                height: 300px;
+                width: 100%;
+                height: 100%;
                 background-color: rgba(0,0,0,0.5);
                 position: fixed;
                 z-index: 999;
@@ -81,8 +81,8 @@
             }
 
             #modal{
-                width: 200px;
-                height: 200px;
+                width: 500px;
+                height: 300px;
                 background-color: #ffffff;
                 margin-left: auto;
                 margin-right: auto;
@@ -107,28 +107,29 @@
                 <div class="alinhar">
                     <div class="link">
                         <a href="index.php">
-                            <img src="Imagens/Computer.png">
+                            <img src="Imagens/Computer.png"> <br>Adm.Conteudo
                         </a>
                     </div>
                     <div class="link">
                         <a href="fale_conosco.php">
-                            <img src="Imagens/Fale_Conosco.png">
+                            <img src="Imagens/Fale_Conosco.png"> <br>Adm.Fale Conosco
                         </a>
                     </div>
                     <div class="link">
                         <a href="Produtos.php">
-                            <img src="Imagens/News.png">
+                            <img src="Imagens/News.png"> <br>Adm.Produtos
                         </a>
                     </div>
                     <div class="link">
                         <a href="Usuarios.php">
-                            <img src="Imagens/User.png">
+                            <img src="Imagens/User.png"> <br>Adm.Usuarios
                         </a>
                     </div>
                     <div class="mensagem">
-                        BEM-VINDO(xxx)
+                        BEM-VINDO, <?php echo($_SESSION['nome'])?>.
                         <br><br><br><br>
-                        <a href="#">Logout</a>
+                        <a href="../login.php?modo=logout ">    <span>Logout</span>
+                        </a>
                     </div>
                 </div>
             </nav>

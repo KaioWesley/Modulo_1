@@ -38,11 +38,10 @@
 	</head>
 	<body>
         
-        <div class="cabecalho">
+            <a href="#" class="fechar"><img src="Imagens/exit.png"></a>
+           
         
-        </div>
         
-        <a href="#" class="fechar"><img src="Imagens/exit.png"></a>
         <table border="1" width="800">
             <tr>
                 <td>

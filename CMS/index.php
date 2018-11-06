@@ -1,3 +1,13 @@
+<?php 
+    
+    require_once('externo.php');
+
+	$conexao = conexaoBD();
+
+    session_start();
+
+?>
+
 <html>
 	<head>
 		<title>
@@ -15,28 +25,29 @@
                 <div class="alinhar">
                     <div class="link">
                         <a href="index.php">
-                            <img src="Imagens/Computer.png">
+                            <img src="Imagens/Computer.png"> <br>Adm.Conteudo
                         </a>
                     </div>
                     <div class="link">
                         <a href="fale_conosco.php">
-                            <img src="Imagens/Fale_Conosco.png">
+                            <img src="Imagens/Fale_Conosco.png"> <br>Adm.Fale Conosco
                         </a>
                     </div>
                     <div class="link">
                         <a href="Produtos.php">
-                            <img src="Imagens/News.png">
+                            <img src="Imagens/News.png"> <br>Adm.Produtos
                         </a>
                     </div>
                     <div class="link">
                         <a href="Usuarios.php">
-                            <img src="Imagens/User.png">
+                            <img src="Imagens/User.png"> <br>Adm.Usuarios
                         </a>
                     </div>
                     <div class="mensagem">
-                        BEM-VINDO(xxx)
+                        BEM-VINDO, <?php echo($_SESSION['nome'])?>.
                         <br><br><br><br>
-                        <a href="#">Logout</a>
+                        <a href="../login.php?modo=logout ">    <span>Logout</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -64,12 +75,14 @@
                         </a>
                     </div>
                     <div class="conteudo">
-                        <div class="imagem">
-                            <img src="Imagens/Promocao.png">
-                        </div>
-                        <div class="titulo">
-                            Promoções
-                        </div>
+                        <a href="CadastroPromocao.php">
+                            <div class="imagem">
+                                <img src="Imagens/Promocao.png">
+                            </div>
+                            <div class="titulo">
+                                Promoções
+                            </div>
+                        </a>
                     </div>
                     <div class="conteudo">
                         <a href="CadastroEndereco.php">
@@ -91,15 +104,6 @@
                             </div>
                         </a>
                     </div>
-                    <div class="conteudo">
-                        <div class="imagem">
-                            <img src="Imagens/Fale_Consco.png">
-                        </div>
-                        <div class="titulo">
-
-                        </div>
-                    </div>
-
                 </div>
             
             </section>

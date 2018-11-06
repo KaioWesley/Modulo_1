@@ -112,7 +112,7 @@
                 </nav>
 
                     <div class="login">
-                        <form name="frmLogin" method="post" action="index.php" >
+                        <form name="frmLogin" method="post" action="login.php" >
                             Usuario:<br>
                             <input type="text" name="txtUsuario"><br>
 

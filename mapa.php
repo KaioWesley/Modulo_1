@@ -41,7 +41,7 @@
                 </nav>
                     
                     <div class="login">
-                        <form name="frmLogin" method="post" action="index.php" >
+                        <form name="frmLogin" method="post" action="login.php" >
                             Usuario:<br>
                             <input type="text" name="txtUsuario"><br>
 
@@ -63,7 +63,7 @@
                     <div class="imgFundo2">
                         <?php
                     
-                        $sql = "SELECT * FROM tbl_endereco";
+                        $sql = "SELECT * FROM tbl_endereco where ativado = 1";
                     
                         $select = mysqli_query($conexao, $sql);
                     

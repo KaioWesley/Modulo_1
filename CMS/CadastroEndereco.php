@@ -17,8 +17,8 @@
         
         if($_POST['btnCadastro']=="Cadastrar"){
         $sql = "INSERT INTO tbl_endereco
-        (logradouro, numero)
-        VALUES ('".$nome."', '".$numero."')";
+        (logradouro, numero, ativado)
+        VALUES ('".$nome."', '".$numero."', 1)";
             
     }else if($_POST['btnCadastro']=="Editar"){
         $sql="UPDATE tbl_endereco SET logradouro = '".$nome."', numero = '".$numero."' WHERE idEndereco=".$_SESSION['idEndereco'];
@@ -61,6 +61,20 @@
                 $nome = $rsEnd['logradouro'];
                 $numero = $rsEnd['numero'];
             }
+        }else if($modo == 'ativado'){
+            $codigo = $_GET['idEndereco'];
+            $_SESSION['idEndereco'] = $codigo;
+            $sql = "UPDATE tbl_endereco SET ativado = 1 WHERE idEndereco=".$_SESSION['idEndereco'];
+            mysqli_query($conexao, $sql);
+            header('location:CadastroEndereco.php');
+            
+        //If para desativar conteudo
+        }else if($modo == 'desativado'){
+            $codigo = $_GET['idEndereco'];
+            $_SESSION['idEndereco'] = $codigo;
+            $sql = "UPDATE tbl_endereco SET ativado = 2 WHERE idEndereco=".$_SESSION['idEndereco'];
+            mysqli_query($conexao, $sql);
+            header('location:CadastroEndereco.php');
         }
     }
 
@@ -83,28 +97,29 @@
                 <div class="alinhar">
                     <div class="link">
                         <a href="index.php">
-                            <img src="Imagens/Computer.png">
+                            <img src="Imagens/Computer.png"> <br>Adm.Conteudo
                         </a>
                     </div>
                     <div class="link">
                         <a href="fale_conosco.php">
-                            <img src="Imagens/Fale_Conosco.png">
+                            <img src="Imagens/Fale_Conosco.png"> <br>Adm.Fale Conosco
                         </a>
                     </div>
                     <div class="link">
                         <a href="Produtos.php">
-                            <img src="Imagens/News.png">
+                            <img src="Imagens/News.png"> <br>Adm.Produtos
                         </a>
                     </div>
                     <div class="link">
                         <a href="Usuarios.php">
-                            <img src="Imagens/User.png">
+                            <img src="Imagens/User.png"> <br>Adm.Usuarios
                         </a>
                     </div>
                     <div class="mensagem">
-                        BEM-VINDO(xxx)
+                        BEM-VINDO, <?php echo($_SESSION['nome'])?>.
                         <br><br><br><br>
-                        <a href="#">Logout</a>
+                        <a href="../login.php?modo=logout ">    <span>Logout</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -185,6 +200,20 @@
                                 
                                 <a href="CadastroEndereco.php?modo=busca&idEndereco=<?php echo($rsEnd['idEndereco'])?>">
                                     <img src="Imagens/pencil.png"></a>
+                                
+                                <?php
+                                    if($rsEnd['ativado'] == 1){?>
+                                      
+                                <a href="CadastroEndereco.php?modo=desativado&idEndereco=<?php  echo($rsEnd['idEndereco'])?>">
+                                    <img src="Imagens/tick.png">
+                                </a>
+                                    <?php }else{ ?>
+                                        <a href="CadastroEndereco.php?modo=ativado&idEndereco=<?php  echo($rsEnd['idEndereco'])?>">
+                                        <img src="Imagens/cross.png">
+                                    </a>
+                                    
+                                   <?php } ?>
+                                
                             </td>
                             
                             

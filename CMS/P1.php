@@ -27,8 +27,8 @@
                 echo("erro");
             }else{
                 $sql = "INSERT INTO tbl_criacao
-        (paragrafo1, paragrafo2, icone)
-        VALUES ('".$par1."', '".$par2."', '".$imagem."')";
+        (paragrafo1, paragrafo2, icone, ativado)
+        VALUES ('".$par1."', '".$par2."', '".$imagem."', 1)";
             
     }
                 
@@ -82,6 +82,20 @@
                 $imagem = $rsEnd['icone'];
                 $par2 = $rsEnd['paragrafo2'];
             }
+        }else if($modo == 'ativado'){
+            $codigo = $_GET['idCriacao'];
+            $_SESSION['idCriacao'] = $codigo;
+            $sql = "UPDATE tbl_criacao SET ativado = 1 WHERE idCriacao=".$_SESSION['idCriacao'];
+            mysqli_query($conexao, $sql);
+            header('location:P1.php');
+            
+        //If para desativar conteudo
+        }else if($modo == 'desativado'){
+            $codigo = $_GET['idCriacao'];
+            $_SESSION['idCriacao'] = $codigo;
+            $sql = "UPDATE tbl_criacao SET ativado = 2 WHERE idCriacao=".$_SESSION['idCriacao'];
+            mysqli_query($conexao, $sql);
+            header('location:P1.php');
         }
     }
 
@@ -104,28 +118,29 @@
                 <div class="alinhar">
                     <div class="link">
                         <a href="index.php">
-                            <img src="Imagens/Computer.png">
+                            <img src="Imagens/Computer.png"> <br>Adm.Conteudo
                         </a>
                     </div>
                     <div class="link">
                         <a href="fale_conosco.php">
-                            <img src="Imagens/Fale_Conosco.png">
+                            <img src="Imagens/Fale_Conosco.png"> <br>Adm.Fale Conosco
                         </a>
                     </div>
                     <div class="link">
                         <a href="Produtos.php">
-                            <img src="Imagens/News.png">
+                            <img src="Imagens/News.png"> <br>Adm.Produtos
                         </a>
                     </div>
                     <div class="link">
                         <a href="Usuarios.php">
-                            <img src="Imagens/User.png">
+                            <img src="Imagens/User.png"> <br>Adm.Usuarios
                         </a>
                     </div>
                     <div class="mensagem">
-                        BEM-VINDO(xxx)
+                        BEM-VINDO, <?php echo($_SESSION['nome'])?>.
                         <br><br><br><br>
-                        <a href="#">Logout</a>
+                        <a href="../login.php?modo=logout ">    <span>Logout</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -167,7 +182,12 @@
                                 class="botao">
                             </td>
                         </tr>
-                        
+                        <tr>
+                            <td colspan="2" class="tabela">
+                                Para não ter problemas no design é aconselhavel manter somente 1 cadastro ativado
+                            </td>
+                            
+                        </tr>
                         <tr>
                             <td colspan="2">
                                 <img src="<?php echo($imagem)?>" class="icone">
@@ -215,7 +235,8 @@
                                 
                                     echo($rsEnd['icone'])
                             
-                                ?>" class="icone">                            </td>
+                                ?>" class="icone">
+                             </td>
                              <td>
                                 <?php 
                                 
@@ -237,6 +258,20 @@
                                 
                                 <a href="P1.php?modo=busca&idCriacao=<?php echo($rsEnd['idCriacao'])?>">
                                     <img src="Imagens/pencil.png"></a>
+                                
+                                <?php
+                                    if($rsEnd['ativado'] == 1){?>
+                                      
+                                <a href="P1.php?modo=desativado&idCriacao=<?php  echo($rsEnd['idCriacao'])?>">
+                                    <img src="Imagens/tick.png">
+                                </a>
+                                    <?php }else{ ?>
+                                        <a href="P1.php?modo=ativado&idCriacao=<?php  echo($rsEnd['idCriacao'])?>">
+                                        <img src="Imagens/cross.png">
+                                    </a>
+                                    
+                                   <?php } ?>
+                                
                             </td>
                             
                             

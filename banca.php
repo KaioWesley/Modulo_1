@@ -39,7 +39,7 @@
                 </nav>
                     
                     <div class="login">
-                        <form name="frmLogin" method="post" action="index.php" >
+                        <form name="frmLogin" method="post" action="login.php" >
                             Usuario:<br>
                             <input type="text" name="txtUsuario"><br>
 
@@ -62,7 +62,7 @@
                         <div class="cor">
                             <?php
                     
-                        $sql = "SELECT * FROM tbl_criacao";
+                        $sql = "SELECT * FROM tbl_criacao where ativado = 1";
                     
                         $select = mysqli_query($conexao, $sql);
                     
@@ -84,7 +84,7 @@
                         <div class="cor">
                             <?php
                     
-                        $sql = "SELECT * FROM tbl_eventos_importantes";
+                        $sql = "SELECT * FROM tbl_eventos_importantes where ativado = 1";
                     
                         $select = mysqli_query($conexao, $sql);
                     
