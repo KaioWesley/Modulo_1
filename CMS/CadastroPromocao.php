@@ -106,6 +106,7 @@
 
 		</title>
          <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/mascara.js"></script>
 	</head>
 	<body>
         <div class="principal">
@@ -151,7 +152,7 @@
                                 Titulo do Livro:
                             </td>
                             <td>
-                                <input type="text" name="txtTitulo" value="<?php echo($titulo)?>">
+                                <input type="text" name="txtTitulo" value="<?php echo($titulo)?>" onkeypress="return Validar(event, 'number', this.id);" required id="titulo">
                             </td>
                             
                         </tr>
@@ -160,7 +161,7 @@
                                 Preço:
                             </td>
                             <td>
-                                <input type="text" name="txtPreco" value="<?php echo($preco)?>" maxlength="10">
+                                <input type="text" name="txtPreco" value="<?php echo($preco)?>" maxlength="10" required id="preco" onkeypress="return Validar(event, 'caracter', this.id);">
                             </td>
                             
                         </tr>
@@ -169,7 +170,7 @@
                                 Capa do Livro:
                             </td>
                             <td>
-                                <input type="file" name="imgCapa">
+                                <input type="file" name="imgCapa" required>
                             </td>
                         </tr>
                         

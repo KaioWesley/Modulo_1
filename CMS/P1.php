@@ -153,7 +153,7 @@
                                 Icone 128x128
                             </td>
                             <td>
-                                <input type="file" name="imgPar1">
+                                <input type="file" name="imgPar1" required>
                             </td>
                             
                         </tr>
@@ -163,7 +163,7 @@
                                 Paragrafo 1:
                             </td>
                             <td>
-                                <textarea name="txtPar1" maxlength="160" cols="30" rows="5"><?php echo($par1)?></textarea>
+                                <textarea name="txtPar1" maxlength="160" cols="30" rows="5" required><?php echo($par1)?></textarea>
                             </td>
                             
                         </tr>
@@ -172,7 +172,7 @@
                                 Paragrafo 2:
                             </td>
                             <td>
-                                <textarea name="txtPar2" maxlength="160" cols="30" rows="5"><?php echo($par2)?></textarea>
+                                <textarea name="txtPar2" maxlength="160" cols="30" rows="5" required><?php echo($par2)?></textarea>
                             </td>
                         </tr>
                         

@@ -160,7 +160,7 @@
                                 Titulo da Noticia:
                             </td>
                             <td>
-                                <input type="text" name="txtTitulo" value="<?php echo($titulo)?>">
+                                <input type="text" name="txtTitulo" value="<?php echo($titulo)?>" required>
                             </td>
                             
                         </tr>
@@ -169,7 +169,7 @@
                                 Imagem:
                             </td>
                             <td>
-                                <input type="file" name="imgFoto">
+                                <input type="file" name="imgFoto" required>
                             </td>
                             
                         </tr>
@@ -178,7 +178,7 @@
                                 Banner:
                             </td>
                             <td>
-                                <input type="file" name="imgBanner">
+                                <input type="file" name="imgBanner" required>
                             </td>
                         </tr>
                         

@@ -227,7 +227,7 @@
                                     Nome:
                                 </td>
                                 <td>
-                                    <input type="text" maxlength="50" value="<?php echo($nome)?>" name="txtNome">
+                                    <input type="text" maxlength="50" value="<?php echo($nome)?>" name="txtNome" id="nome" onkeypress="return Validar(event,'number', this.id);" required>
                                 </td>
                             </tr>
                             <tr>
@@ -235,7 +235,7 @@
                                     Senha:
                                 </td>
                                 <td>
-                                    <input type="password" maxlength="15" name="txtSenha">
+                                    <input type="password" maxlength="15" name="txtSenha" required>
                                 </td>
                             </tr>
                             <tr>
@@ -243,7 +243,7 @@
                                     Data de Nascimento:
                                 </td>
                                 <td>
-                                    <input type="date" value="<?php echo($dtNasc)?>" name="dtNasc">
+                                    <input type="date" value="<?php echo($dtNasc)?>" name="dtNasc" required>
                                 </td>
                             </tr>
                             <tr>
@@ -253,7 +253,7 @@
                                 
                                 </td>
                                 <td>
-                                    <input type="text" value="<?php echo($telefone)?>" name="txtTel">
+                                    <input type="text" value="<?php echo($telefone)?>" name="txtTel" id="telefone" onkeypress="return Validar(event, 'caracter', this.id);" required maxlength="10">
                                 </td>
                             </tr>
                             <tr>
@@ -261,7 +261,7 @@
                                     Celular:
                                 </td>
                                 <td>
-                                    <input type="text" value="<?php echo($celular)?>" name="txtCel">
+                                    <input type="text" value="<?php echo($celular)?>" name="txtCel" id="celular" onkeypress="return Validar(event, 'caracter', this.id);" required maxlength="11">
                                 </td>
                             </tr>
                             <tr>
@@ -269,7 +269,7 @@
                                     Email:
                                 </td>
                                 <td>
-                                    <input type="email" value="<?php echo($email)?>" name="txtEmail">
+                                    <input type="email" value="<?php echo($email)?>" name="txtEmail" required>
                                 </td>
                             </tr>
                             <tr>

@@ -159,7 +159,7 @@
                                 Sobre a Celebridade:
                             </td>
                             <td>
-                                <textarea name="txtSobre" maxlength="350" cols="40" rows="5"><?php echo($sobre)?></textarea>
+                                <textarea name="txtSobre" maxlength="350" cols="40" rows="5" required><?php echo($sobre)?></textarea>
                             </td>
                             
                         </tr>
@@ -168,7 +168,7 @@
                                 Imagem:
                             </td>
                             <td>
-                                <input type="file" name="imgFoto" value="">
+                                <input type="file" name="imgFoto" required>
                             </td>
                             
                         </tr>
@@ -177,7 +177,7 @@
                                 Banner:
                             </td>
                             <td>
-                                <input type="file" name="imgBanner" value="">
+                                <input type="file" name="imgBanner" required>
                             </td>
                         </tr>
                         

@@ -86,6 +86,7 @@
 
 		</title>
          <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script type="text/javascript" src="js/mascara.js"></script>
 	</head>
 	<body>
         <div class="principal">
@@ -131,7 +132,7 @@
                                 Logradouro:
                             </td>
                             <td>
-                                <input type="text" value="<?php echo($nome)?>" name="txtEndereco">
+                                <input type="text" value="<?php echo($nome)?>" name="txtEndereco" required onkeypress="return Validar(event,'number', this.id);" id="logradouro">
                             </td>
                         </tr>
                         <tr>
@@ -139,7 +140,7 @@
                                 Numero:
                             </td>
                             <td>
-                                <input type="number" value="<?php echo($numero)?>" name="txtNumero">
+                                <input type="number" value="<?php echo($numero)?>" name="txtNumero" required >
                             </td>
                         </tr>
                         <tr>

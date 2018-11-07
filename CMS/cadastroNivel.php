@@ -121,7 +121,7 @@
                                     Nivel:
                                 </td>
                                 <td>
-                                    <input type="text" value="<?php echo($nome) ?>" maxlength="50" name="txtNomeNivel">
+                                    <input type="text" value="<?php echo($nome) ?>" maxlength="50" name="txtNomeNivel" required>
                                 </td>
                             <tr>
                                 <td colspan="2">
