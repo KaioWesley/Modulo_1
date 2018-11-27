@@ -32,7 +32,7 @@ if($rsEnd)
 {
 $_SESSION['nome'] = $rsEnd['nome'];
 $_SESSION['senha'] = $senha;
-header('location:cms/index.php');
+header('location:CMS/index.php');
 }
 else{
   unset ($_SESSION['nome']);

@@ -212,10 +212,10 @@
 													
                         </a>
                         <a href="fale_conosco.php?modo=excluir&id=<?php echo($rsContatos['id'])?>">
-                            <img src="imagens/delete.png">
+                            <img src="Imagens/delete.png">
                         </a>
                         <a href="#" class="vizualizar" onclick="modal(<?php echo($rsContatos['id'])?>)">
-                            <img src="imagens/search.png"></a>
+                            <img src="Imagens/search.png"></a>
                         </td>
                     </tr>
 				<?php } ?>

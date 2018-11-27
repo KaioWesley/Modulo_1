@@ -1,9 +1,9 @@
 <?php
     //CRIANDO VARIAVEIS PARA SE CONECTAR NO BANCO
-    $host = "localhost";
-    $user = "root";
-    $password = "bcd127";
-    $database = "db_bugs_bunny";
+    $host = "192.168.0.2";
+    $database = "dbpc1620182";
+    $user = "pc1620182";
+    $password = "senai127";
 
 
     //VARIAVEIS VAZIAS PRA NÃO DAR ERRO

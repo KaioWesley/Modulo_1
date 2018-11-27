@@ -141,6 +141,22 @@ a{
     transition: 1s;
 }
 
+.imagem3{
+    width: 256px;
+    height: 275px;
+    margin-left: 50px;
+    margin-top: 130px;
+    float: left;
+    text-align: center;
+    font-family: verdana;
+    font-weight: bold;
+}
+
+.imagem3:hover{
+    background-color: #38a0d1;
+    transition: 1s;
+}
+
 .cadastroUser{
     width: 550px;
     height: 500px;

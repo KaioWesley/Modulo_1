@@ -52,6 +52,21 @@
             </nav>
             <section class="gerenciador">
                
+                <div class="imagem3">
+                    <a href="cadastroProduto.php">
+                        <img src="Imagens/produto.png"><br> Cadastrar Produto
+                    </a>
+                </div>
+                <div class="imagem3">
+                    <a href="cadastroCategoria.php">
+                        <img src="Imagens/categoria.png"><br> Cadastrar Categoria
+                    </a>
+                </div>
+                <div class="imagem3">
+                    <a href="cadastroSubCategoria.php">
+                        <img src="Imagens/subcategoria.png"><br> Cadastrar Subcategoria
+                    </a>
+                </div>
             
             </section>
             <footer>SITE DESENVOLVIDO POR KAIO WESLEY</footer>
